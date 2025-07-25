@@ -38,11 +38,14 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Plan
-        run: terraform plan -var="db_username=${{ secrets.DB_USERNAME }}" -var="db_password=${{ secrets.DB_PASSWORD }}" -var="bucket_name=${{ secrets.S3_BUCKET_NAME }}" -var="ecr_image_url=${{ env.ECR_IMAGE }}"
+      - name: Terraform Destroy
+        run: terraform destroy        
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -var="db_username=${{ secrets.DB_USERNAME }}" -var="db_password=${{ secrets.DB_PASSWORD }}" -var="bucket_name=${{ secrets.S3_BUCKET_NAME }}" -var="ecr_image_url=${{ env.ECR_IMAGE }}"
+#      - name: Terraform Plan
+#        run: terraform plan -var="db_username=${{ secrets.DB_USERNAME }}" -var="db_password=${{ secrets.DB_PASSWORD }}" -var="bucket_name=${{ secrets.S3_BUCKET_NAME }}" -var="ecr_image_url=${{ env.ECR_IMAGE }}"
+
+#      - name: Terraform Apply
+#        run: terraform apply -auto-approve -var="db_username=${{ secrets.DB_USERNAME }}" -var="db_password=${{ secrets.DB_PASSWORD }}" -var="bucket_name=${{ secrets.S3_BUCKET_NAME }}" -var="ecr_image_url=${{ env.ECR_IMAGE }}"
 
       - name: Build and Push Docker Image
         env:
